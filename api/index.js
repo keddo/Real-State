@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import isOnline from 'is-online'
 import userRoutes from './routes/user.route.js';
+import authRouter from './routes/auth.route.js';
 import morgan from 'morgan';
 dotenv.config();
 const app = express();
@@ -12,6 +13,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 // Routes
 app.use('/api/user', userRoutes);
+app.use('/api/auth', authRouter);
+
 const PORT = process.env.PORT || 5000;
 
 let online
